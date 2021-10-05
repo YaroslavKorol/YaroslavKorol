@@ -102,6 +102,7 @@ class Part1 {
         println("В итоге x=$x y=$y")
     }
 
+
     @Test
     fun task6() {
         val k = 25
