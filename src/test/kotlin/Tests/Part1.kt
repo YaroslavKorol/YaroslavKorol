@@ -6,88 +6,83 @@ import org.junit.Test
 class Part1 {
 
     @Test
-    fun task1() {
-       for (i in 1..99) {
-          if (i % 3 == 0) println(i)
-       }
-    }
-
-
-
-    @Test
-    fun task2() {
-        val k = (1..10).random()
-        println("Значение k равно $k")
-        for (i in 10..99) {
-            if (i % k == 0) println(i)
+    fun `Задача №1 | Напечатайте на экране монитора числа, принадлежащие отрезку 1-99 и кратные числу 3` () {
+        println("Числа, принадлежащие отрезку [1;99] и кратные числу 3:")
+        for (i in 1..99) {
+            if (i % 3 == 0)
+                println(i)
         }
     }
 
+    @Test
+    fun `Задача №2 | Напечатайте на экране все двузначные числа, кратные данному числу k` () {
+        val k = 10
+        println("Все двузначные числа, кратные числу $k:")
+        for (i in 10..99)
+            if (i % k == 0)
+                println(i)
+    }
 
     @Test
-    fun task3() {
-        val a = (1..900).random()
-        val b = (1..900).random()
-        val c = (1..900).random()
-        val d = (1..900).random()
-        val res = a + b + c + d
-        var out = res
-        var len = 0
+    fun `Задача №3 | Датчиком случайных чисел сгенерируйте четыре натуральных числа в интервале от 1 до 900, определите, сколько цифр содержит сумма полученных чисел, нельзя использовать строки, списки, массивы` () {
 
-        while (out !== 0) {
-            len ++
-            out /= 10
+        val number1 = (1..900).random()
+        val number2 = (1..900).random()
+        val number3 = (1..900).random()
+        val number4 = (1..900).random()
+
+        val result = (number1 + number2 + number3 + number4)
+        var sum = result
+        var length = 0
+        while (sum !== 0) {
+            ++length
+            sum /= 10
         }
-        println("Даны 4 числа: $a, $b, $c, $d. \nСумма чисел равна $res содержит $len цифры.")
+
+        println("Полученные числа: $number1; $number2; $number3; $number4.")
+        println("Результат. Сумма $result содержит $length цифры.")
+
     }
 
     @Test
-    fun task4() {
-        val a = (1..100).random()
-        val b = (1..100).random()
-        val c = (1..100).random()
-        val d = (1..100).random()
-        val max = maxOf(a,b,c,d)
-        val min = minOf(a,b,c,d)
+    fun `Задача №4 | Даны четыре числа, найдите наибольшее и наименьшее среди них, используя не более четырех сравнений` () {
 
-        println("Даны 4 числа: $a, $b, $c, $d. \nМаксимальное значение:$max. \nМинимальное значение:$min.")
+        val a = (1..1000).random()
+        val b = (1..1000).random()
+        val c = (1..1000).random()
+        val d = (1..1000).random()
+
+        println("Дано 4 числа: $a, $b, $c, $d")
+        println("Необходимо найти минимальное и максимальное из них.")
+        val max = maxOf(a, b, c, d)
+        println("Результат: $max")
+        val min = minOf(a, b, c, d)
+        println("Результат: $min")
     }
 
     @Test
-    fun task5() {
+    fun `Задача №5 (а) | Имеются две переменные одинакового типа целые или вещественные, обменяйте их значения используя дополнительную переменную` () {
+
         var a = 5
-        var b = 10
-        var c:Int
+        var b = 9
+        var c = 0
 
-        println("Вариант А: \nНачальные значения $a, $b")
-        c=a
-        a=b
-        b=c
-        println("Конечные результат $a, $b")
+        c=a; a=b; b=c
 
-        println("Вариант Б: \nНачальные результат $a, $b")
+        println("Переменная a=$a; b=$b.")
+    }
+
+    @Test
+    fun `Задача №5 (б) | Имеются две переменные одинакового типа целые или вещественные, обменяйте их значения не вводя дополнительную переменную` () {
+
+        var a = 5
+        var b = 9
+
         a=a+b
         b=a-b
         a=a-b
-        println("Конечные результат $a, $b")
+
+        println("Переменная a=$a; b=$b.")
     }
-
-    @Test
-    fun Task6(){
-        var k = (1..27).random()
-
-        println("Значение k равно $k \nРезультат:")
-
-        for (i in  100..999){
-            var n=i
-            var a = 0
-            while (n > 0){
-                a += (n % 10)
-                n /= 10
-            }
-            if (k==a) println(i)
-        }
-    }
-
 
 }
