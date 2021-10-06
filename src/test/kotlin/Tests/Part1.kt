@@ -118,8 +118,60 @@ class Part1 {
             }
             if (sum == k) println("$i")
         }
+    }
+
+
+    private fun poslFibonachi(n: Int): Int {
+        if (n == 0 || n == 1) return n
+
+        return poslFibonachi(n - 1) + poslFibonachi(n - 2)
 
     }
+
+    @Test
+    fun task7() {
+        val k = 8
+        println("Последовательность Фиббоначи из $k элементов")
+        for (i in 0 until k) println(poslFibonachi(i))
+
+    }
+
+    private fun sumDigits(n: Int): Int {
+        var sum = 0
+        var k = n
+        if (k < 10) return n
+        sum += n % 10
+        k /= 10
+        return sum + sumDigits(k)
+
+    }
+
+    @Test
+    fun task8() {
+        val k = 777
+        println("Сумма цифр натурального числа $k")
+        println(sumDigits(k))
+    }
+
+    private fun sumNumber1(n: Int): Int {
+        var sum = 0
+        var k = n
+        if (k == 1) return n
+        if (k < 10) return 0
+
+        if (n % 10 == 1) sum++
+        k /= 10
+        return sum + sumNumber1(k)
+
+    }
+
+    @Test
+    fun task9() {
+        val k = 1131
+        println("Количество едениц в натуральном числе $k")
+        println(sumNumber1(k))
+    }
+
 }
 
 
