@@ -41,26 +41,36 @@ class Part1 {
         println("Даны 4 числа: $a, $b, $c, $d. \nСумма чисел равна $res содержит $len цифры.")
     }
 
+
     @Test
     fun task4() {
-        val a = (1..100).random()
-        val b = (1..100).random()
-        val c = (1..100).random()
-        val d = (1..100).random()
-        val max = maxOf(a,b,c,d)
-        val min = minOf(a,b,c,d)
+        val a = (-100..100).random()
+        val b = (-100..100).random()
+        val c = (-100..100).random()
+        val d = (-100..100).random()
 
-        println("Даны 4 числа: $a, $b, $c, $d. \nМаксимальное значение:$max. \nМинимальное значение:$min.")
+        var max:Int
+        var min:Int
+
+        if (a > b) {max = a; min = b}
+        else {max = b; min = a}
+
+        if (c > max) {max = c}
+        else if (min > c) {min = c}
+
+        if (d > max) {max = d}
+        else if (min > d) {min = d}
+
+        println("Даны 4 числа: $a, $b, $c, $d.\nМаксимальное число $max.\nМинимальное число $min.")
     }
 
     @Test
     fun task5() {
         var a = 5
         var b = 10
-        var c:Int
+        var c = a
 
         println("Вариант А: \nНачальные значения $a, $b")
-        c=a
         a=b
         b=c
         println("Конечные результат $a, $b")
@@ -89,5 +99,32 @@ class Part1 {
         }
     }
 
+
+    fun fibonachi(a: Int): Int {
+        if (a == 0 || a == 1) return a
+
+        return fibonachi(a - 1) + fibonachi(a - 2)
+
+    }
+
+    @Test
+    fun task7() {
+        val k = (5..10).random()
+        println("Последовательность Фиббоначи из $k чисел")
+        for (i in 0 until k) println(fibonachi(i))
+
+    }
+
+
+    fun sumDigit(N: Int): Int {
+        return if (N == 0) 0 else N % 10 + sumDigit(N / 10)
+    }
+
+    @Test
+    fun task8() {
+        val N = (100..1000).random()
+        println("Сумма цифр натурального числа $N")
+        println(sumDigit(N))
+    }
 
 }
