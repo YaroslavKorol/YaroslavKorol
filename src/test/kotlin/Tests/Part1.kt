@@ -100,10 +100,10 @@ class Part1 {
     }
 
 
-    fun fibonachi(a: Int): Int {
+    private fun fibonachiMethod(a: Int): Int {
         if (a == 0 || a == 1) return a
 
-        return fibonachi(a - 1) + fibonachi(a - 2)
+        return fibonachiMethod(a - 1) + fibonachiMethod(a - 2)
 
     }
 
@@ -111,12 +111,12 @@ class Part1 {
     fun task7() {
         val k = (5..10).random()
         println("Последовательность Фиббоначи из $k чисел")
-        for (i in 0 until k) println(fibonachi(i))
+        for (i in 0 until k) println(fibonachiMethod(i))
 
     }
 
 
-    fun sumDigit(N: Int): Int {
+    private fun sumDigit(N: Int): Int {
         return if (N == 0) 0 else N % 10 + sumDigit(N / 10)
     }
 
@@ -125,6 +125,18 @@ class Part1 {
         val N = (100..1000).random()
         println("Сумма цифр натурального числа $N")
         println(sumDigit(N))
+    }
+
+    private fun sumNumber(N: Int): Int {
+        return if (N == 0) 0 else if (N % 10 == 1) 1 + sumNumber(N / 10) else sumNumber(N / 10)
+    }
+
+    @Test
+    fun task9() {
+        val k = 11918
+
+        println("Количество единиц в натуральном числе $k")
+        println("составляет " + sumNumber(k) + " еденицы")
     }
 
 }
