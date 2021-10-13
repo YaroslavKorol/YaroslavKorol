@@ -7,11 +7,10 @@ class Part1 {
 
     @Test
     fun task1() {
-       for (i in 1..99) {
-          if (i % 3 == 0) println(i)
-       }
+        for (i in 1..99) {
+            if (i % 3 == 0) println(i)
+        }
     }
-
 
 
     @Test
@@ -35,7 +34,7 @@ class Part1 {
         var len = 0
 
         while (out !== 0) {
-            len ++
+            len++
             out /= 10
         }
         println("Даны 4 числа: $a, $b, $c, $d. \nСумма чисел равна $res содержит $len цифры.")
@@ -49,20 +48,30 @@ class Part1 {
         val c = (-100..100).random()
         val d = (-100..100).random()
 
-        var max:Int
-        var min:Int
+        var max: Int
+        var min: Int
 
-        if (a > b) {max = a; min = b}
-        else {max = b; min = a}
+        if (a > b) {
+            max = a; min = b
+        } else {
+            max = b; min = a
+        }
 
-        if (c > max) {max = c}
-        else if (min > c) {min = c}
+        if (c > max) {
+            max = c
+        } else if (min > c) {
+            min = c
+        }
 
-        if (d > max) {max = d}
-        else if (min > d) {min = d}
+        if (d > max) {
+            max = d
+        } else if (min > d) {
+            min = d
+        }
 
         println("Даны 4 числа: $a, $b, $c, $d.\nМаксимальное число $max.\nМинимальное число $min.")
     }
+
 
     @Test
     fun task5() {
@@ -71,31 +80,32 @@ class Part1 {
         var c = a
 
         println("Вариант А: \nНачальные значения $a, $b")
-        a=b
-        b=c
+        a = b
+        b = c
         println("Конечные результат $a, $b")
 
         println("Вариант Б: \nНачальные результат $a, $b")
-        a=a+b
-        b=a-b
-        a=a-b
+        a = a + b
+        b = a - b
+        a = a - b
         println("Конечные результат $a, $b")
     }
 
+
     @Test
-    fun Task6(){
+    fun Task6() {
         var k = (1..27).random()
 
         println("Значение k равно $k \nРезультат:")
 
-        for (i in  100..999){
-            var n=i
+        for (i in 100..999) {
+            var n = i
             var a = 0
-            while (n > 0){
+            while (n > 0) {
                 a += (n % 10)
                 n /= 10
             }
-            if (k==a) println(i)
+            if (k == a) println(i)
         }
     }
 
@@ -126,6 +136,7 @@ class Part1 {
         println("Сумма цифр натурального числа $N")
         println(sumDigit(N))
     }
+
 
     private fun sumNumber(N: Int): Int {
         return if (N == 0) 0 else if (N % 10 == 1) 1 + sumNumber(N / 10) else sumNumber(N / 10)
