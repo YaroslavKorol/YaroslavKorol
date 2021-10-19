@@ -54,10 +54,20 @@ class Part1 {
 
         println("Дано 4 числа: $a, $b, $c, $d")
         println("Необходимо найти минимальное и максимальное из них.")
-        val max = maxOf(a, b, c, d)
-        println("Результат: $max")
-        val min = minOf(a, b, c, d)
-        println("Результат: $min")
+        var max: Int
+        var min: Int
+
+        if (a > b) {max = a; min = b}
+        else {max = b; min = a}
+
+        if (max < c) {max = c}
+        else if (min > c) {min = c}
+
+        if (max < d) {max = d}
+        else if (min > d) {min = d}
+
+        println("Максимальное число: $max")
+        println("Минимальное число: $min")
     }
 
     @Test
@@ -83,6 +93,40 @@ class Part1 {
         a=a-b
 
         println("Переменная a=$a; b=$b.")
+    }
+
+    @Test
+    fun `Задача №6 | Напишите программу нахождения всех трехзначных чисел, сумма цифр которых равна данному числу k, нельзя использовать строки, списки, массивы` () {
+        val k = (10..20).random()
+
+        println("Все трехзначные числа, сумма цифр которых равна числу $k:")
+
+        for (i in 100..999) {
+            var n = i
+            var a = 0
+            while (n > 0) {
+                a += (n % 10)
+                n /= 10
+            }
+            if (k == a) println(i)
+        }
+    }
+
+
+    private fun fibonachi(a: Int): Int {
+        if (a == 0 || a == 1) return a
+
+        return fibonachi(a - 1) + fibonachi(a - 2)
+
+    }
+    @Test
+
+    fun `Задача №7 | Напечатать на экране последовательность Фиббоначи из k элементов, при решении использовать рекурсию, нельзя использовать строки, списки, массивы` () {
+
+        val k = (1..10).random()
+        println("Последовательность Фиббоначи из $k элементов:")
+        for (i in 0 until k) println(fibonachi(i))
+
     }
 
 }
