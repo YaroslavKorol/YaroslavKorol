@@ -3,6 +3,8 @@ package helpers
 class Stack {
     val elements: MutableList<Any> = mutableListOf()
 
+
+
     fun add(item: Any) {
         elements.add(item)
         println("Добавлен элемент: $item")
