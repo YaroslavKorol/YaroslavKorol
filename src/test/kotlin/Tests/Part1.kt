@@ -1,6 +1,7 @@
 package Tests
 
 import org.junit.Test
+import java.lang.Integer.sum
 
 
 class Part1 {
@@ -119,14 +120,41 @@ class Part1 {
         return fibonachi(a - 1) + fibonachi(a - 2)
 
     }
-    @Test
 
+    @Test
     fun `Задача №7 | Напечатать на экране последовательность Фиббоначи из k элементов, при решении использовать рекурсию, нельзя использовать строки, списки, массивы` () {
 
         val k = (1..10).random()
         println("Последовательность Фиббоначи из $k элементов:")
         for (i in 0 until k) println(fibonachi(i))
-
     }
 
+    @Test
+    fun `Задача №8 | Дано натуральное число N, вычислите сумму его цифр, при решении использовать рекурсию, нельзя использовать строки, списки, массивы` () {
+        val n = 1337
+        val sum = 0
+        println(" " + (sum(n, sum)).toString())
+    }
+
+    private fun units(n: Int, y: Int): Int {
+        var n = n
+        var y = y
+        var sum = 0
+        if (n != 0) {
+            sum += n % 10
+            n = n / 10
+            return if (sum == 1) {
+                y++
+                units(n, y)
+            } else units(n, y)
+        }
+        return y
+    }
+
+    @Test
+    fun `Задача №9 | Дано натуральное число N, вычислить количество единиц, при решении использовать рекурсию, нельзя использовать строки, списки, массивы` () {
+        val n = 1112113
+        val y = 0
+        println(units(n, y))
+    }
 }
